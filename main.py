@@ -91,7 +91,7 @@ def create_qrcode(id_user, id_event, number_seats):
     _list = cur.execute("""SELECT * FROM Events WHERE id == ?""", (id_event,)).fetchall()[0]
     data = [_list[1], _list[4], number_seats]
     p = os.path.abspath('main.py')[:-7]
-    filename = p + "qrcode_image/" + str(id_user) + "+" + str(id_event)
+    filename = p + str(id_user) + "+" + str(id_event)
     img = qrcode.make(data)  # создание кода с данными
     img.save(filename)
     conn.commit()
